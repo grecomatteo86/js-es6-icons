@@ -123,7 +123,7 @@ const icons = [
 // 3. Istanzio una const dentro la quale salvo il div dell'html
 const iconsDiv = $('.icons');
 
-// 2. Uso un ciclo for each per ciclare tutte le icone e poterle stampare
+// 2. Uso un ciclo forEach per ciclare tutte le icone e poterle stampare
 icons.forEach((item) => {
 
   // 1. Destrutturo
@@ -138,3 +138,26 @@ icons.forEach((item) => {
   iconsDiv.append(html);
 
 });
+
+
+// Milestone 2 : colorare le icone per tipo
+
+// 4. Mi creo un array di colori
+const colors = ['yellow','red','green'];
+
+/* 5. Devo creare un nuovo set di icone colorate: ho bisogno di ottenere un
+array con la category food, beverage e animal, per poi salvarmele dentro una
+variabile in modo da poter fare il match tra category e colore.
+Mi utilizzo il forEach per ciclare icons e prendermi le category */
+
+// mi creo un array vuoto per salvare le category
+const categories = [];
+
+icons.forEach((item,i) => {
+  // faccio un controllo per prendermi le category una volta sola (e non 6 volte per ognuna)
+  if (categories.includes(item.category) == false ) {
+    categories.push(item.category);
+  }
+});
+
+console.log(categories);

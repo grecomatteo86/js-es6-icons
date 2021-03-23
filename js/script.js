@@ -150,7 +150,7 @@ array con la category food, beverage e animal, per poi salvarmele dentro una
 variabile in modo da poter fare il match tra category e colore.
 Mi utilizzo il forEach per ciclare icons e prendermi le category */
 
-// mi creo un array vuoto per salvare le category
+// 6. Mi creo un array vuoto per salvare le category
 const categories = [];
 
 icons.forEach((item,i) => {
@@ -160,4 +160,17 @@ icons.forEach((item,i) => {
   }
 });
 
-console.log(categories);
+/* 7. Coloro le icone per tipo: mi devo creare un nuovo array di icone (colorate),
+quindi verificare in che posizione si trova la category dell'icona che sto ciclando
+e prendermi il colore che si trova in corrispondenza (fare un'assegnazione per
+posizione tra gli array colors e categories). Utilizzo il MAP */
+const iconsColored = icons.map((item) => {
+  const categoryIndex = categories.indexOf(item.category);
+  const colorItem = colors[categoryIndex];
+
+  item.color = colorItem;
+  
+  return item;
+});
+
+console.log(iconsColored);

@@ -174,19 +174,7 @@ const iconsColored = icons.map((item) => {
 });
 
 // 8. Stampiamo le icone colorate
-iconsColored.forEach((item) => {
-
-  const {name,prefix,family,color} = item;
-
-  const html =`
-  <div>
-    <i class="${family} ${prefix}${name}" style="color:${color}"></i>
-    <div class="title">${name}</div>
-  </div>`;
-
-  iconsDiv.append(html);
-
-});
+printIcons (iconsDiv,iconsColored);
 
 // Milestone 3: creare una select con i tipi di icone e usarla per filtrare le icone.
 
@@ -223,10 +211,18 @@ select.change(function () {
 
   /* 14. inserisco un comando che mi toglie le icone selezionate precedentemente
   quando seleziono le successive */
-  iconsDiv.html('');
-
   // 13. vado a ristamparle
-  iconFiltered.forEach((item) => {
+  printIcons (iconsDiv,iconFiltered);
+
+});
+
+// FUNZIONI
+
+function printIcons (target,icons) {
+
+  target.html('');
+
+  icons.forEach((item) => {
 
     const {name,prefix,family,color} = item;
 
@@ -236,8 +232,8 @@ select.change(function () {
       <div class="title">${name}</div>
     </div>`;
 
-    iconsDiv.append(html);
+    target.append(html);
 
   });
 
-});
+}

@@ -123,7 +123,7 @@ const icons = [
 // 3. Istanzio una const dentro la quale salvo il div dell'html
 const iconsDiv = $('.icons');
 
-// 2. Uso un ciclo forEach per ciclare tutte le icone e poterle stampare
+/* 2. Uso un ciclo forEach per ciclare tutte le icone e poterle stampare
 icons.forEach((item) => {
 
   // 1. Destrutturo
@@ -137,7 +137,7 @@ icons.forEach((item) => {
 
   iconsDiv.append(html);
 
-});
+});*/
 
 
 // Milestone 2 : colorare le icone per tipo
@@ -169,8 +169,21 @@ const iconsColored = icons.map((item) => {
   const colorItem = colors[categoryIndex];
 
   item.color = colorItem;
-  
+
   return item;
 });
 
-console.log(iconsColored);
+// 8. Stampiamo le icone colorate
+iconsColored.forEach((item) => {
+
+  const {name,prefix,family,color} = item;
+
+  const html =`
+  <div>
+    <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+    <div class="title">${name}</div>
+  </div>`;
+
+  iconsDiv.append(html);
+
+});

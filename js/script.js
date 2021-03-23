@@ -186,10 +186,7 @@ categoria e la appendo */
 const select = $('#type');
 /* 10. Per ogni categoria mi vado a creare la mia option nell'html.
 Il value mi serve per andare a fare il filtro sulle icone */
-categories.forEach((item) => {
-  const optionHtml = `<option value="${item}">${item}</option>`;
-  select.append(optionHtml);
-});
+printOptions (select,categories);
 
 /* 11. Quando seleziono una voce dal filtro, mi devono rimanere solo le
 corrispondenti icone. Uso il .change() di jQuery, che mi permette di rimanere
@@ -236,4 +233,11 @@ function printIcons (target,icons) {
 
   });
 
+}
+
+function printOptions (target,options){
+  options.forEach((item) => {
+    const optionHtml = `<option value="${item}">${item}</option>`;
+    target.append(optionHtml);
+  });
 }

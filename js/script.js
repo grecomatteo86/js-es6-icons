@@ -187,3 +187,57 @@ iconsColored.forEach((item) => {
   iconsDiv.append(html);
 
 });
+
+// Milestone 3: creare una select con i tipi di icone e usarla per filtrare le icone.
+
+/* Ho già l'array categories; ho già una select, che per il momento ha solo ALL;
+adesso mi devo aggiungere tante option quante sono le categories. Prendo ogni
+categoria e la appendo */
+
+/* 9. Mi seleziono la select e me la salvo in una const */
+const select = $('#type');
+/* 10. Per ogni categoria mi vado a creare la mia option nell'html.
+Il value mi serve per andare a fare il filtro sulle icone */
+categories.forEach((item) => {
+  const optionHtml = `<option value="${item}">${item}</option>`;
+  select.append(optionHtml);
+});
+
+/* 11. Quando seleziono una voce dal filtro, mi devono rimanere solo le
+corrispondenti icone. Uso il .change() di jQuery, che mi permette di rimanere
+in ascolto di un evento e vedere quando cambia il valore di questa select.
+Vado a definire l'evento */
+select.change(function () {
+  const optionSelected = $(this).val();
+  /* 12. adesso devo fare in modo che al click su una determinata categoria, mi devono
+  rimanere solamente le icone corrispondenti */
+  let iconFiltered = iconsColored.filter((item) => {
+    return item.category == optionSelected;
+  });
+
+  /* 15. Faccio un controllo per fare in modo che quando seleziono ALL mi compaiono
+  tutte le icone: se */
+  if (iconFiltered.length == 0) {  //per fare questo ho bisogno che la variabile a riga 214 sia una LET
+    iconFiltered = iconsColored;
+  }
+
+  /* 14. inserisco un comando che mi toglie le icone selezionate precedentemente
+  quando seleziono le successive */
+  iconsDiv.html('');
+
+  // 13. vado a ristamparle
+  iconFiltered.forEach((item) => {
+
+    const {name,prefix,family,color} = item;
+
+    const html =`
+    <div>
+      <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+      <div class="title">${name}</div>
+    </div>`;
+
+    iconsDiv.append(html);
+
+  });
+
+});

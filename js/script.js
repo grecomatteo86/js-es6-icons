@@ -118,6 +118,11 @@ const icons = [
   },
 ];
 
+// Milestone 1: mostro tutte le icone disponibili
+
+// 3. Istanzio una const dentro la quale salvo il div dell'html
+const iconsDiv = $('.icons');
+
 // 2. Uso un ciclo for each per ciclare tutte le icone e poterle stampare
 icons.forEach((item) => {
 
@@ -130,6 +135,6 @@ icons.forEach((item) => {
     <div class="title">${name}</div>
   </div>`;
 
-  $('.icons').append(html);
+  iconsDiv.append(html);
 
 });
